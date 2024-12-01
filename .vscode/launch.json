@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Metaflow Debug Tutorial",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/tutorials/07-debug/debug_flow.py",
+            "args": [
+                "run"
+            ],
+            "subProcess": true,
+            "console": "integratedTerminal"
+        }
+    ]
+}

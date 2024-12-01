@@ -1,0 +1,41 @@
+[build-system]
+requires = [ "setuptools>=46.4.0", "wheel>=0.36.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "acme_metaflow"
+version = "0.0.1"
+description = "Metaflow based orchestration"
+readme = "README.md"
+classifiers = [ "Programming Language :: Python :: 3.9", ]
+dependencies = [
+    "python-dotenv",
+    "metaflow",
+    "pylint"
+    # "metaflow-netflixext"
+] 
+
+[[project.authors]]
+email = "guner.stan@gmail.com"
+
+[project.scripts]
+am = "acme_metaflow._main:main"
+
+[project.urls]
+homepage = "https://example.com"
+repository = "https://example.com"
+
+[project.optional-dependencies]
+dev = [
+    "pytest", # for testing
+    "uv", # for venv
+    "mkdocs", # for documentation
+    "mkdocs-material", # theme for mkdocs
+    "mkdocstrings[python]", # mkdocs plugin to generate API docs from sources
+    "jupyterlab", # for jupyter notebooks
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["acme_metaflow"]
+# [tool.setuptools.package-data]
