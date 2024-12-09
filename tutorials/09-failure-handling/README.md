@@ -1,4 +1,4 @@
-# Episode 10-failure-handling
+# Episode 09-failure-handling
 
 **Shows how to make flows robust to failures**
 
@@ -13,5 +13,5 @@ More info at [Link](https://docs.metaflow.org/scaling/failures).
 
 #### To play this episode:
 1. ```cd tutorials```
-2. ```python 10-failure-handling/failure_handling_flow.py run```
+2. ```python 09-failure-handling/failure_handling_flow.py --no-pylint run```
 
