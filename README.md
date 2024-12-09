@@ -4,6 +4,23 @@ Shows how metaflow can be used to orchestrate python programs.
 
 View `/tutorials`.
 
+# Dev environment
+
+The project comes with a python development environment.
+To generate it, after checking out the repo run:
+
+    chmod +x create_env.sh
+
+Then to generate the environment (or update it to latest version based on state of `uv.lock`), run:
+
+    ./create_env.sh
+
+This will generate a new python virtual env under `.venv` directory. You can activate it via:
+
+    `source .venv/bin/activate`
+
+If you are using VSCode, set to use this env via `Python: Select Interpreter` command.
+
 # Project template
 
 This project has been setup with `acme-project-create`, a python code template library.
