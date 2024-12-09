@@ -10,17 +10,16 @@ class HandleFailure(FlowSpec):
             raise Exception("Bad luck!")
         else:
             print("Lucky you!")
-        self.next(self.end)
+        self.next(self.retrying_step)
 
     @retry(times=4, minutes_between_retries=1)
+    @step
     def retrying_step(self):
-        print("This step will be retried 4 times, waiting 1 minute between retries")
-        if hasattr(self, 'count'):
-            self.count += 1
-        else: # first time
-            self.count = 1
-        if self.count < 4:
-            raise Exception("Not yet!")
+        import time
+        if int(time.time()) % 2 == 0:
+            raise Exception("Bad luck!")
+        else:
+            print("Lucky you!")
         self.next(self.withdraw_money_from_account)
 
     @retry(times=0)
@@ -66,6 +65,7 @@ class HandleFailure(FlowSpec):
             print("It seems 'start' did not survive.")
         self.next(self.timeout)
 
+    @catch(var='timeout_failed')
     @timeout(seconds=5)
     @step
     def timeout(self):
