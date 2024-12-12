@@ -13,5 +13,5 @@ because flow data can be re-loaded.**
 
 #### To play this episode:
 1. ```cd tutorials```
-2. ```python 03-artifacts/merge_artifacts.py show```
+2. ```python 03-artifacts/merge_artifacts.py run```
 3. ```python 03-artifacts/use_artifacts.py run```
