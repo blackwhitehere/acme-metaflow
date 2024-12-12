@@ -78,3 +78,5 @@ site/
 TODO.md
 
 *.code-workspace
+
+/tmp
