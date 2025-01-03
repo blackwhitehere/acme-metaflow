@@ -1,0 +1,66 @@
+# Adopted from helm template at: https://github.com/outerbounds/metaflow-tools/blob/master/k8s/helm/metaflow/charts/metaflow-service/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: acme-metaflow-service-deployment
+  namespace: acme-metaflow
+  #labels
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: acme-metaflow-service
+  template:
+    metadata:
+      #annotations:
+      labels:
+        app: acme-metaflow-service
+    spec:
+      #imagePullSecrets:
+      #securityContext:
+      #serviceAccountName
+      initContainers:
+        - name: db-migrations
+          image: public.ecr.aws/outerbounds/metaflow_metadata_service:2.4.13
+          command:
+            - "/opt/latest/bin/python3"
+            - "/root/run_goose.py"
+            - "--only-if-empty-db"
+          #env:
+          envFrom:
+            - secretRef:
+                name: service-db-auth
+      containers:
+        - name: acme-metaflow-service
+          image: public.ecr.aws/outerbounds/metaflow_metadata_service:2.4.13
+          imagePullPolicy: IfNotPresent
+          #imagePullSecrets:
+          #securityContext:
+          command: ["/opt/latest/bin/python3", "-m", "services.metadata_service.server" ]
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /ping
+              port: http
+            initialDelaySeconds: 60
+            periodSeconds: 60
+          readinessProbe:
+            httpGet:
+              path: /ping
+              port: http
+            initialDelaySeconds: 60
+            periodSeconds: 60
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "200m"
+          # env:
+          envFrom:
+            - secretRef:
+                name: service-db-auth
+      #nodeSelector:
+      #affinity:
+      #tolerations:

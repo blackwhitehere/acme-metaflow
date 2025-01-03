@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: acme-metaflow
+
+resources:
+  - namespace.yml
+  - deployment.yml
+  - service.yml
+
+images:
+  - name: metaflow_metadata_service
+    newTag: "2.4.13"
+
+secretGenerator:
+  - name: service-db-auth
+    envs:
+      - db.env
+  - name: k8-job-auth
+    envs:
+      - k8job.env

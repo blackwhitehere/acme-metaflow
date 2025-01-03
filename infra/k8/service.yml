@@ -1,0 +1,22 @@
+# adopted from helm at: https://github.com/outerbounds/metaflow-tools/blob/master/k8s/helm/metaflow/charts/metaflow-service/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: acme-metaflow-service-k8-service
+  namespace: acme-metaflow
+  #labels:
+  #annotations:
+spec:
+  type: ClusterIP
+  ports:
+    - name: metadata
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    # todo: is this section needed?
+    - name: upgrades
+      port: 8082
+      protocol: TCP
+      targetPort: 8082
+  selector:
+    app: acme-metaflow-service
