@@ -7,11 +7,12 @@ name = "acme_metaflow"
 version = "0.0.1"
 description = "Metaflow based orchestration"
 readme = "README.md"
-classifiers = [ "Programming Language :: Python :: 3.9", ]
+classifiers = [ "Programming Language :: Python :: 3.12", ]
 dependencies = [
     "python-dotenv",
     "metaflow",
-    "pylint"
+    "pylint",
+    "kubernetes", # for `metaflow configure kubernetes`
     # "metaflow-netflixext"
 ] 
 
