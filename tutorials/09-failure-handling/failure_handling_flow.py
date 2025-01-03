@@ -2,19 +2,10 @@ from metaflow import FlowSpec, step, retry, catch, timeout
 
 class HandleFailure(FlowSpec):
 
-    @retry # will retry the step for three times before giving up. It waits for 2 minutes between retries for remote tasks.
+    # will retry the step for three times before giving up. It waits for 2 minutes between retries for remote tasks
+    @retry # pass params to retry like retry(times=4, minutes_between_retries=1) to modify default
     @step
     def start(self):
-        import time
-        if int(time.time()) % 2 == 0:
-            raise Exception("Bad luck!")
-        else:
-            print("Lucky you!")
-        self.next(self.retrying_step)
-
-    @retry(times=4, minutes_between_retries=1)
-    @step
-    def retrying_step(self):
         import time
         if int(time.time()) % 2 == 0:
             raise Exception("Bad luck!")
@@ -33,10 +24,11 @@ class HandleFailure(FlowSpec):
         self.params = range(3)
         self.next(self.compute, foreach='params')
 
+    # catch decorator will make sure flow execution continues even if the step fails allowing flow to recover
     @catch(var='compute_failed', print_exception=True)
     @step
     def compute(self):
-        """This will fail is div is 0"""
+        """This will fail when self.input is 0"""
         self.div = self.input
         self.x = 5 / self.div
         self.next(self.join)
@@ -50,6 +42,7 @@ class HandleFailure(FlowSpec):
         self.next(self.start_platform_exception)
 
     # Catch can also handle exceptions from failed infrastructure/platform issues
+    # rather than just application exceptions
     @catch(var='start_platform_exception_failed')
     @retry
     @step

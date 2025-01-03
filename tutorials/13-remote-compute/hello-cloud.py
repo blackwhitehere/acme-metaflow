@@ -1,7 +1,7 @@
-from metaflow import FlowSpec, step, retry, resources
+from metaflow import FlowSpec, step, retry, kubernetes
 
 
-class HelloCloudFlow(FlowSpec):
+class HelloCloudFlow2(FlowSpec):
     """
     A flow where Metaflow prints 'Metaflow says Hi from the cloud!'
 
@@ -16,18 +16,13 @@ class HelloCloudFlow(FlowSpec):
         which the flow is executed.
 
         """
-        from metaflow import get_metadata
-
         print("HelloCloud is starting.")
-        print("")
-        print("Using metadata provider: %s" % get_metadata())
-        print("")
         print("The start step is running locally. Next, the ")
         print("'hello' step will run remotely on Kubernetes. ")
 
         self.next(self.hello)
 
-    @resources(cpu=1, memory=500)
+    @kubernetes(cpu=0.5, memory=124)
     @retry
     @step
     def hello(self):
@@ -39,7 +34,7 @@ class HelloCloudFlow(FlowSpec):
         goes wrong, the step will be automatically retried.
 
         """
-        self.message = "Hi from the cloud!"
+        self.message = "Hi from the Cloud!"
         print("Metaflow says: %s" % self.message)
         self.next(self.end)
 
@@ -54,4 +49,4 @@ class HelloCloudFlow(FlowSpec):
 
 
 if __name__ == "__main__":
-    HelloCloudFlow()
+    HelloCloudFlow2()
