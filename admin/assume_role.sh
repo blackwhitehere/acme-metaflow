@@ -19,6 +19,3 @@ assume_role_output=$(aws sts assume-role --role-arn arn:aws:iam::$account_id:rol
 export AWS_ACCESS_KEY_ID=$(echo $assume_role_output | jq -r '.Credentials.AccessKeyId')
 export AWS_SECRET_ACCESS_KEY=$(echo $assume_role_output | jq -r '.Credentials.SecretAccessKey')
 export AWS_SESSION_TOKEN=$(echo $assume_role_output | jq -r '.Credentials.SessionToken')
-
-# Now you can use the AWS CLI with the refreshed credentials
-aws s3 ls $AWS_BUCKET_NAME --profile $AWS_CLI_PROFILE
