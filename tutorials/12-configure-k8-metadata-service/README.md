@@ -14,7 +14,7 @@
 See setup in dir `infra/k8` for Kubernetes deployment setup:
 
     # Start minikube
-    minikube start --memory=3933
+    minikube start --memory=3933 --cpus 4
     kubectl config use-context minikube
     # set env vars in /infra/k8/db.env file: MF_METADATA_DB_PSWD, MF_METADATA_DB_USER, MF_METADATA_DB_NAME, MF_METADATA_DB_HOST, MF_METADATA_DB_PORT, MF_METADATA_DB_SSL_MODE
     # Apply kustomization
@@ -28,8 +28,8 @@ See setup in dir `infra/k8` for Kubernetes deployment setup:
 
 Then:
 
-1. Run `kubectl port-forward service/acme-metaflow-service-k8-service 7080:8080` to forward from local port 7080 to metadata service running on port 8080 in the service.
-1. Run `metaflow configure kubernetes`
+1. Run `kubectl port-forward -n acme-metaflow service/acme-metaflow-service-k8-service 7080:8080` to forward from local port 7080 to metadata service running on port 8080 in the service.
+1. Run `metaflow configure kubernetes` or edit at `~/.metaflowconfig/config.json`
 and provide configuration:
 
         "METAFLOW_DEFAULT_METADATA": "service",

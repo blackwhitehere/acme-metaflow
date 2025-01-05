@@ -1,7 +1,7 @@
 from metaflow import FlowSpec, step, retry, kubernetes
 
 
-class HelloCloudFlow2(FlowSpec):
+class HelloCloudFlow(FlowSpec):
     """
     A flow where Metaflow prints 'Metaflow says Hi from the cloud!'
 
@@ -16,7 +16,7 @@ class HelloCloudFlow2(FlowSpec):
         which the flow is executed.
 
         """
-        print("HelloCloud is starting.")
+        print("HelloCloudFlow is starting.")
         print("The start step is running locally. Next, the ")
         print("'hello' step will run remotely on Kubernetes. ")
 
@@ -49,4 +49,4 @@ class HelloCloudFlow2(FlowSpec):
 
 
 if __name__ == "__main__":
-    HelloCloudFlow2()
+    HelloCloudFlow()
