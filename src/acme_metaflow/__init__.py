@@ -1,6 +1,4 @@
-from ._main import (
-    main
-)
+from . import landing
 
 import logging
 from dotenv import load_dotenv

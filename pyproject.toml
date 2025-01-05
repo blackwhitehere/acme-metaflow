@@ -14,13 +14,11 @@ dependencies = [
     "pylint",
     "kubernetes", # for `metaflow configure kubernetes`
     # "metaflow-netflixext"
+    "yfinance", # example data fetching
 ] 
 
 [[project.authors]]
 email = "guner.stan@gmail.com"
-
-[project.scripts]
-am = "acme_metaflow._main:main"
 
 [project.urls]
 homepage = "https://example.com"
