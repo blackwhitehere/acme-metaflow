@@ -1,0 +1,1 @@
+kubectl -n argo port-forward service/argo-server 2746:2746

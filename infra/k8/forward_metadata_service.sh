@@ -1,0 +1,1 @@
+kubectl -n acme-metaflow port-forward service/acme-metaflow-service-k8-service 7080:8080
