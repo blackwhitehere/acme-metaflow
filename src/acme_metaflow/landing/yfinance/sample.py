@@ -1,4 +1,4 @@
-from metaflow import FlowSpec, step, retry, kubernetes, conda, project
+from metaflow import FlowSpec, step, retry, kubernetes, project
 
 def get_minute_data(ticker_symbol, days_back=1):
     """
@@ -41,7 +41,6 @@ class LandingYfinanceSample(FlowSpec):
         print("LandingYfinanceSample is starting.")
         self.next(self.land_data)
 
-    @conda(packages={"yfinance": "0.2.51"})
     @kubernetes(cpu=0.5, memory=258)
     @retry
     @step

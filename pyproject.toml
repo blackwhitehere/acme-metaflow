@@ -15,6 +15,7 @@ dependencies = [
     "kubernetes", # for `metaflow configure kubernetes`
     # "metaflow-netflixext"
     "yfinance", # example data fetching
+    "pip" # required by metaflow
 ] 
 
 [[project.authors]]
