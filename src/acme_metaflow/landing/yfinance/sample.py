@@ -1,4 +1,4 @@
-from metaflow import FlowSpec, step, retry, kubernetes, project
+from metaflow import FlowSpec, step, retry, kubernetes, project, schedule
 
 def get_minute_data(ticker_symbol, days_back=1):
     """
@@ -31,6 +31,7 @@ def get_minute_data(ticker_symbol, days_back=1):
 
 
 @project(name='acme_landing')
+@schedule(daily=True)
 class LandingYfinanceSample(FlowSpec):
     """
     Lands minute resolution OHLC (+ Volume, Dividends, Stock Splits) AAPL data from yfinance.

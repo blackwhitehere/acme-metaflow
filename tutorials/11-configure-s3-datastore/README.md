@@ -77,6 +77,12 @@ and "Trust relationship" that allows the IAM Identity Center user to assume the 
 ### Configure the S3 Bucket as a Metaflow Datastore
 1. Configure local client to use S3 as a Datastore by calling `metaflow configure aws` and provide bucket name `s3://acme-s3-dev` when prompted to configure the storage backend. Skip configuration of other options when prompted. For more info see [Link](https://docs.outerbounds.com/engineering/operations/configure-metaflow/)
 
+You should see then the following values in `~/.metaflowconfig/config.json`:
+
+        "METAFLOW_DATASTORE_SYSROOT_S3": "s3://acme-s3-dev",
+        "METAFLOW_DATATOOLS_S3ROOT": "s3://acme-s3-dev/data",
+        "METAFLOW_DEFAULT_DATASTORE": "s3",
+
 ### To play this episode:
 1. ```cd tutorials```
 1. ```python 00-helloworld/helloworld.py run```

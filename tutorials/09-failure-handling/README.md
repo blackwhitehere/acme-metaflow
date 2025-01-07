@@ -5,9 +5,9 @@
 More info at [Link](https://docs.metaflow.org/scaling/failures).
 
 #### Showcasing:
-- Use `retry` to deal with transient platform issues. You can do this easily on the command line with the --with retry option.
-- Use `retry` with `catch` for extra robustness if you have modified your code to deal with faulty steps which are handled by catch.
-- Use `catch` without `retry` to handle steps that can't be retried safely. It is a good idea to use times=0 for retry in this case.
+- Use `retry` to deal with transient platform issues. You can add it for all steps with the `--with retry` option on command line.
+- Use `retry` with `catch` if you want your code to deal with faulty steps.
+- Use `catch` without `retry` to handle steps that can't be retried safely. It is a good idea to pass `times=0` to retry in this case.
 - Use `timeout` with any of the above if your code can get stuck.
 
 

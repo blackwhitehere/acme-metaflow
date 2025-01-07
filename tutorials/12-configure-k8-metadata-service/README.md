@@ -6,7 +6,7 @@
 #### Pre-requisites
 
 1. Running postgres DB
-1. Minikube installation with 4GB of memory
+1. Minikube installation with 4GB of memory, 4 cores
 
 
 #### To start local K8 cluster
@@ -33,11 +33,11 @@ Then:
 and provide configuration:
 
         "METAFLOW_DEFAULT_METADATA": "service",
-        "METAFLOW_KUBERNETES_CONTAINER_IMAGE": "python:3.12",
+        "METAFLOW_KUBERNETES_CONTAINER_IMAGE": "ghcr.io/blackwhitehere/acme-metaflow:latest",
         "METAFLOW_KUBERNETES_NAMESPACE": "acme-metaflow",
         "METAFLOW_KUBERNETES_SECRETS": "k8-job-auth-<unique identifier for secret>",
         "METAFLOW_KUBERNETES_SERVICE_ACCOUNT": "default",
         "METAFLOW_SERVICE_INTERNAL_URL": "http://acme-metaflow-service-k8-service.acme-metaflow.svc.cluster.local:8080",
         "METAFLOW_SERVICE_URL": "http://localhost:7080"`
 
-1. Run `python tutorials/00-helloworld/helloworld.py run` to execue the flow against metadataservice.
+1. Run `python tutorials/00-helloworld/helloworld.py run` to execue the flow against the metadata service.

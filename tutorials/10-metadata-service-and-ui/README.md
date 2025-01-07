@@ -2,9 +2,9 @@
 
 **Shows how to use a common metadata provider and view flows in Metaflow UI**
 
-In `05-access-results` recall that we relied on a metadata provider to provide information about stored flow runs.
-In that tutorial the metadata provider was provided by a local file system.
-However, if we'd like to collaborate with other people on the flows, metaflow provides a shared metadata provider implemented as a service.
+In `05-access-results` recall that we relied on a "metadata provider" to provide information about stored flow runs.
+The default metadata provider is implemented via a local file system (`.metaflow` directory).
+However, if we'd like to collaborate with other people on the flows, metaflow provides a shared metadata provider implemented as a web service.
 
 #### Showcasing:
 

@@ -3,8 +3,8 @@
 **We use Argo Worflows as an orchestrator for Metaflow Flows**
 
 #### Showcasing:
-- `argo-workflows create` command line option
-- `argo-workflows trigger` command line option
+- `argo-workflows create` command line option to create a new flow on remore orchestrator
+- `argo-workflows trigger` command line option to start a flow on remote orchestrator
 - Use `project` decorator to create distinct namespaces for results.
 
 #### To play this episode:
