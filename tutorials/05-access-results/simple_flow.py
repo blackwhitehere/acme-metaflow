@@ -18,9 +18,9 @@ class SimpleFlow(FlowSpec):
 
     @step
     def hello_short(self):
-        print("hello_short has a different step name: %s" % current.step_name)
-        print("hello_short has a different task id: %s" % current.task_id)
-        print("hello_short has a different pathspec: %s" % current.pathspec)
+        print("hello_short has a step name: %s" % current.step_name)
+        print("hello_short has a task id: %s" % current.task_id)
+        print("hello_short has a pathspec: %s" % current.pathspec)
         self.a=2
         self.next(self.hello_long)
 
