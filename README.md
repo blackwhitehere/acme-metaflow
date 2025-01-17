@@ -17,13 +17,13 @@ Then to generate the environment (or update it to latest version based on state 
 
 This will generate a new python virtual env under `.venv` directory. You can activate it via:
 
-    `source .venv/bin/activate`
+    source .venv/bin/activate
 
 If you are using VSCode, set to use this env via `Python: Select Interpreter` command.
 
 ## Dev deployment
 
-See details in tutorials/12-configure-k8-metadata-service
+See details in `tutorials/12-configure-k8-metadata-service`
 
 ## Project template
 
