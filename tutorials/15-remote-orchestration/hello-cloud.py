@@ -8,7 +8,7 @@ class HelloRemoteOrchestration(FlowSpec):
     Run this flow to validate your Kubernetes configuration.
 
     """
-    @kubernetes(cpu=0.5, memory=124)
+    @kubernetes(cpu=0.1, memory=64)
     @step
     def start(self):
         print("HelloRemoteOrchestration is starting.")
@@ -22,7 +22,7 @@ class HelloRemoteOrchestration(FlowSpec):
         print("Metaflow says: %s" % self.message)
         self.next(self.end)
 
-    @kubernetes(cpu=0.5, memory=124)
+    @kubernetes(cpu=0.1, memory=64)
     @step
     def end(self):
         print("HelloRemoteOrchestration is finished.")

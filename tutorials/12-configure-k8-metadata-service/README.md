@@ -14,7 +14,7 @@
 See setup in dir `infra/k8` for Kubernetes deployment setup:
 
     # Start minikube
-    minikube start --memory=3933 --cpus 4
+    minikube start --memory=3919 --cpus 4
     kubectl config use-context minikube
     # set env vars in /infra/k8/db.env file: MF_METADATA_DB_PSWD, MF_METADATA_DB_USER, MF_METADATA_DB_NAME, MF_METADATA_DB_HOST, MF_METADATA_DB_PORT, MF_METADATA_DB_SSL_MODE
     # Apply kustomization

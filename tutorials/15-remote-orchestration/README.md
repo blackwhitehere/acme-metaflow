@@ -9,5 +9,7 @@
 
 #### To play this episode:
 `cd tutorials`
+`python 15-remote-orchestration/hello-cloud.py --with retry --with kubernetes --production argo-workflows create`
+`python 15-remote-orchestration/hello-cloud.py --with retry --with kubernetes --production --branch experiment argo-workflows create`
 `python 15-remote-orchestration/hello-cloud.py --with retry --with kubernetes argo-workflows create`
 `python 15-remote-orchestration/hello-cloud.py --with retry argo-workflows trigger`
