@@ -27,8 +27,8 @@ class HelloCloudFlow(FlowSpec):
     @step
     def hello(self):
         """
-        This steps runs remotely on Kubernetes using 1 virtual CPU and 500Mb of
-        memory. Since we are now using a remote metadata service and data
+        This steps runs remotely on Kubernetes using specified resource.
+        Since we are now using a remote metadata service and data
         store, the flow information and artifacts are available from
         anywhere. The step also uses the retry decorator, so that if something
         goes wrong, the step will be automatically retried.
