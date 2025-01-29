@@ -1,6 +1,7 @@
-from metaflow import FlowSpec, step, retry, kubernetes, project
+from metaflow import FlowSpec, step, retry, kubernetes, project, schedule
 
 @project(name='example_project')
+@schedule(daily=True)
 class HelloRemoteOrchestration(FlowSpec):
     """
     A flow where Metaflow prints 'Metaflow says Hi from the cloud!'
